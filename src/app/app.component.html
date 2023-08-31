@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container" *ngIf="weatherData">
   <div class="upper-data">
-    <img src="../assets/hot.jpeg" *ngIf="14 > 15">
-    <img src="../assets/cold.jpg" *ngIf="14 <= 15">
+    <img src="../assets/hot.jpeg" *ngIf="weatherData.main.temp > 15">
+    <img src="../assets/cold.jpg" *ngIf="weatherData.main.temp <= 15">
 
     <div class="weather-data">
-      <div class="location">Jakarta</div>
-      <div class="temperature">{{ 14.40 | number: '1.0-0' }} °C</div>
+      <div class="location">{{ weatherData.name }}</div>
+      <div class="temperature">{{ weatherData.main.temp | number: '1.0-0' }} °C</div>
     </div>
   </div>
   <div class="lower-data">
@@ -19,7 +19,7 @@
           <span>min</span>
         </div>
         <div class="info-block-value">
-          10 °C
+          {{ weatherData.main.temp_min | number: '1.0-0' }} °C
         </div>
       </div>
 
@@ -29,7 +29,7 @@
           <span>max</span>
         </div>
         <div class="info-block-value">
-          20 °C
+          {{ weatherData.main.temp_max | number: '1.0-0' }} °C
         </div>
       </div>
 
@@ -39,7 +39,7 @@
           <span>humidity</span>
         </div>
         <div class="info-block-value">
-          77%
+          {{ weatherData.main.humidity }}%
         </div>
       </div>
 
@@ -49,11 +49,69 @@
           <span>wind</span>
         </div>
         <div class="info-block-value">
-          11 km/h
+          {{ weatherData.wind.speed }} km/h
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!--<div class="container">-->
+<!--  <div class="upper-data">-->
+<!--    <img src="../assets/hot.jpeg" *ngIf="14 > 15">-->
+<!--    <img src="../assets/cold.jpg" *ngIf="14 <= 15">-->
+
+<!--    <div class="weather-data">-->
+<!--      <div class="location">Jakarta</div>-->
+<!--      <div class="temperature">{{ 14.40 | number: '1.0-0' }} °C</div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="lower-data">-->
+<!--    <div class="more-info-label">-->
+<!--      More Information-->
+<!--    </div>-->
+<!--    <div class="more-info-container">-->
+<!--      <div class="info-block">-->
+<!--        <div class="info-block-label">-->
+<!--          <img src="../assets/min.png">-->
+<!--          <span>min</span>-->
+<!--        </div>-->
+<!--        <div class="info-block-value">-->
+<!--          10 °C-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="info-block">-->
+<!--        <div class="info-block-label">-->
+<!--          <img src="../assets/max.png">-->
+<!--          <span>max</span>-->
+<!--        </div>-->
+<!--        <div class="info-block-value">-->
+<!--          20 °C-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="info-block">-->
+<!--        <div class="info-block-label">-->
+<!--          <img src="../assets/humidity.png">-->
+<!--          <span>humidity</span>-->
+<!--        </div>-->
+<!--        <div class="info-block-value">-->
+<!--          77%-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="info-block">-->
+<!--        <div class="info-block-label">-->
+<!--          <img src="../assets/wind.png">-->
+<!--          <span>wind</span>-->
+<!--        </div>-->
+<!--        <div class="info-block-value">-->
+<!--          11 km/h-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 <router-outlet></router-outlet>
